@@ -16,9 +16,9 @@ namespace MoodAnalyserTest
         {
             ///Arrange
             string expected = "HAPPY";
-            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            MoodAnalyser moodAnalyser = new MoodAnalyser("i am very happy".ToUpper());
             ///Act
-            string mood = moodAnalyser.AnalyseMood("i am very happy".ToUpper());
+            string mood = moodAnalyser.AnalyseMood();
             ///Assert
             Assert.AreEqual(expected, mood);
         }
@@ -30,9 +30,9 @@ namespace MoodAnalyserTest
         {
             ///Arrange
             string expected = "SAD";
-            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            MoodAnalyser moodAnalyser = new MoodAnalyser("i am very sad".ToUpper());
             ///Act
-            string mood = moodAnalyser.AnalyseMood("i am very sad".ToUpper());
+            string mood = moodAnalyser.AnalyseMood();
             ///Assert
             Assert.AreEqual(expected, mood);
         }
