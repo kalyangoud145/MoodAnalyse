@@ -9,18 +9,28 @@ namespace MoodAnalyse
     /// </summary>
     public class MoodAnalyser
     {
+        /// Initialised message as private
+        private string message;
+        /// <summary>
+        ///Constructor Initializes a new instance of the <see cref="MoodAnalyser"/> class.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
         /// <summary>
         /// Analyses the mood of the person bases on the input message
         /// </summary>
         /// <param name="message">The message.</param>
         /// <returns></returns>
-        public string AnalyseMood(string message)
+        public string AnalyseMood()
         {
-            if (message.Contains("SAD"))
+            if (this.message.Contains("SAD"))
             {
                 return "SAD";
             }
-            else if (message.Contains("HAPPY"))
+            else if (this.message.Contains("HAPPY"))
             {
                 return "HAPPY";
             }
