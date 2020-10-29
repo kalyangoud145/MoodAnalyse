@@ -1,7 +1,8 @@
-﻿using System;
+﻿using MoodAnalyserTest;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
-
 namespace MoodAnalyse
 {
     /// <summary>
@@ -26,18 +27,27 @@ namespace MoodAnalyse
         /// <returns></returns>
         public string AnalyseMood()
         {
-            if (this.message.Contains("SAD"))
+            try
             {
-                return "SAD";
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "mood should not be empty");
+                }
+                else if (this.message.Contains("SAD"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else if (this.message.Contains("HAPPY"))
+            catch (NullReferenceException)
             {
-                return "HAPPY";
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "mood should not be null");
             }
-            else
-            {
-                return "Mood cannot be assessed";
-            }
+
         }
+
     }
 }

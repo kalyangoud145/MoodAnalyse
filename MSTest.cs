@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyse;
+using System;
+
 namespace MoodAnalyserTest
 {
     /// <summary>
@@ -36,5 +38,51 @@ namespace MoodAnalyserTest
             ///Assert
             Assert.AreEqual(expected, mood);
         }
+        /// <summary>
+        /// Given the null as input should return mood should not be null
+        /// </summary>
+        /// <param name="message">The message.</param>
+        [TestMethod]
+        [DataRow(null)]
+        public void Given_Null_AsInput_Should_Return_MOOD_SHOULD_NOT_BE_NULL(string message)
+        {
+            try
+            {
+                //Arrange
+                MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+                ///Act
+                var mood = moodAnalyser.AnalyseMood();
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                ///Assert
+                Assert.AreEqual("mood should not be null", e.Message);
+            }
+
+        }
+        /// <summary>
+        /// Given Empty message as input parameter should throw exception as
+        /// moos should not be empty
+        /// </summary>
+        [TestMethod]
+        public void Given_Empty_AsInput_Should_Return_MOOD_SHOULD_NOT_BE_EMPTY()
+        {
+            try
+            {
+                /// Arrange
+                string message = "";
+                ///string expected = "mood should not be empty";
+                MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+                ///Act
+                var mood = moodAnalyser.AnalyseMood();
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                ///Assert
+                Assert.AreEqual("mood should not be empty", e.Message);
+            }
+
+        }
+
     }
 }
