@@ -13,7 +13,7 @@ namespace MoodAnalyse
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            MoodAnalyser moodAnalyser = new MoodAnalyser("he is very sad".ToUpper());
+            MoodAnalyser moodAnalyser = new MoodAnalyser("".ToUpper());
             Console.WriteLine("The person is in " + moodAnalyser.AnalyseMood( )+ " Mood");
         }
     }
