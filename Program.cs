@@ -2,6 +2,9 @@
 
 namespace MoodAnalyse
 {
+    /// <summary>
+    /// Main class for implementation
+    /// </summary>
     class Program
     {
         /// <summary>
