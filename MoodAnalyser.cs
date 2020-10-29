@@ -26,18 +26,23 @@ namespace MoodAnalyse
         /// <returns></returns>
         public string AnalyseMood()
         {
-            if (this.message.Contains("SAD"))
+            try
             {
-                return "SAD";
+                if (this.message.Contains("SAD"))
+                {
+                    return "SAD";
+                }
+                else 
+                {
+                    return "HAPPY";
+                }
             }
-            else if (this.message.Contains("HAPPY"))
+            ///Retun HAPPY in case of null exception
+            catch
             {
                 return "HAPPY";
             }
-            else
-            {
-                return "Mood cannot be assessed";
-            }
+            
         }
     }
 }

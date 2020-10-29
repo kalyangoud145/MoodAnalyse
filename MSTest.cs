@@ -36,5 +36,21 @@ namespace MoodAnalyserTest
             ///Assert
             Assert.AreEqual(expected, mood);
         }
+        /// <summary>
+        /// Given the null as input should return HAPPY.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        [TestMethod]
+        [DataRow("null")]///Passed null through DataRow
+        public void Given_Null_AsInput_Should_Return_HAPPY(string message)
+        {
+            //Arrange
+            string expected = "HAPPY";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message.ToUpper());
+            ///Act
+            string mood = moodAnalyser.AnalyseMood();
+            ///Assert
+            Assert.AreEqual(expected, mood);
+        }
     }
 }
