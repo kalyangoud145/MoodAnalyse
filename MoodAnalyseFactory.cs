@@ -7,8 +7,22 @@ using System.Text.RegularExpressions;
 
 namespace MoodAnalyse
 {
+    /// <summary>
+    /// class for implementing reflection for mood analyser
+    /// </summary>
     public class MoodAnalyseFactory
     {
+        /// <summary>
+        /// Creates the mood analyser object.
+        /// </summary>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="constructorName">Name of the constructor.</param>
+        /// <returns></returns>
+        /// <exception cref="MoodAnalyserCustomException">
+        /// class not found.
+        /// or
+        /// constructor not found.
+        /// </exception>
         public static object CreateMoodAnalyserObject(string className, string constructorName)
         {
             string pattern = @"." + constructorName + "$";
@@ -23,12 +37,12 @@ namespace MoodAnalyse
                 }
                 catch (ArgumentNullException)
                 {
-                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "class not found.");
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "class not found");
                 }
             }
             else
             {
-                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "constructor not found.");
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "constructor not found");
             }
         }
     }
