@@ -12,6 +12,11 @@ namespace MoodAnalyse
     {
         /// Initialised message as private
         private string message;
+
+        public MoodAnalyser()
+        {
+        }
+
         /// <summary>
         ///Constructor Initializes a new instance of the <see cref="MoodAnalyser"/> class.
         /// </summary>
