@@ -83,6 +83,16 @@ namespace MoodAnalyserTest
             }
 
         }
+        /// <summary>
+        /// Given the mood analyse class name should return mood analyse object.
+        /// </summary>
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject()
+        {
+            object expected = new MoodAnalyser();
+            object obj = MoodAnalyseFactory.CreateMoodAnalyserObject("MoodAnalyse.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(obj);
+        }
 
     }
 }

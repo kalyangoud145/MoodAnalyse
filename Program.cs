@@ -13,8 +13,9 @@ namespace MoodAnalyse
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            MoodAnalyser moodAnalyser = new MoodAnalyser("".ToUpper());
+            MoodAnalyser moodAnalyser = new MoodAnalyser("he is happy".ToUpper());
             Console.WriteLine("The person is in " + moodAnalyser.AnalyseMood( )+ " Mood");
+            MoodAnalyseFactory.CreateMoodAnalyserObject("MoodAnalyse.MoodAnalyser", "MoodAnalyser");
         }
     }
 }
