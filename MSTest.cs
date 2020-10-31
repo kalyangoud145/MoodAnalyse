@@ -149,7 +149,6 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("constructor not found", e.Message);
             }
         }
-
         ///UC 5
         /// <summary>
         /// Givens the mood analyser class name should return mood analyser object using parametrized constructor.
@@ -208,7 +207,55 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("constructor not found", e.Message);
             }
         }
-
-
+        ///TC6.1
+        /// <summary>
+        /// Given happy message using reflection when proper should retutn happy mood
+        /// </summary>
+        [TestMethod]
+        public void Given_Happy_Message_Using_Reflection_When_Proper_Should_Return_Happy()
+        {
+            //Arrange
+            string message = "HAPPY";
+            string methodName = "AnalyseMood";
+            //Act
+            string mood = MoodAnalyseFactory.InvokeAnalyseMood(message, methodName);
+            //Assert
+            Assert.AreEqual("HAPPY", mood);
+        }
+        /// <summary>
+        ///  Given sad message using reflection when proper should retutn sad mood
+        /// </summary>
+        [TestMethod]
+        public void Given_Sad_Message_Using_Reflection_When_Proper_Should_Return_SAD()
+        {
+            //Arrange
+            string message = "SAD";
+            string methodName = "AnalyseMood";
+            //Act
+            string mood = MoodAnalyseFactory.InvokeAnalyseMood(message, methodName);
+            //Assert
+            Assert.AreEqual("SAD", mood);
+        }
+        ///TC 6.2
+        /// <summary>
+        /// Given improper method name to throw exception that no such method 
+        /// </summary>
+        [TestMethod]
+        public void Given_Improper_Method_Name_Should_Throw_MoodAnalyserCustomException_Indicating_No_Such_Method()
+        {
+            try
+            {
+                //Arrange
+                string message = "HAPPY";
+                string methodName = "SampleMethodName";
+                //Act
+                string actual = MoodAnalyseFactory.InvokeAnalyseMood(message, methodName);
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                //Assert
+                Assert.AreEqual("no such method", e.Message);
+            }
+        }
     }
 }
