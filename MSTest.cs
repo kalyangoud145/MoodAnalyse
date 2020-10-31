@@ -162,7 +162,7 @@ namespace MoodAnalyserTest
             string constructorName = "MoodAnalyser";
             MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
             //Act
-            object resultObj = MoodAnalyseFactory.CreateMoodAnalyserUsingParameterizedConstructor(className, constructorName);
+            object resultObj = MoodAnalyseFactory.CreateMoodAnalyserUsingParameterizedConstructor(className, constructorName, "HAPPY");
             //Assert
             expectedObj.Equals(resultObj);
         }
@@ -177,9 +177,9 @@ namespace MoodAnalyserTest
                 //Arrange
                 string className = "DemoNamespace.MoodAnalyser";
                 string constructorName = "MoodAnalyser";
-                MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
+                MoodAnalyser expectedObj = new MoodAnalyser("SAD");
                 //Act
-                object resultObj = MoodAnalyseFactory.CreateMoodAnalyserObject(className, constructorName);
+                object resultObj = MoodAnalyseFactory.CreateMoodAnalyserUsingParameterizedConstructor(className, constructorName, "HAPPY");
             }
             catch (MoodAnalyserCustomException e)
             {
@@ -200,7 +200,7 @@ namespace MoodAnalyserTest
                 string className = "MoodAnalyse.MoodAnalyser";
                 string constructorName = "SampleConstructorName";
                 //Act
-                object resultObj = MoodAnalyseFactory.CreateMoodAnalyserObject(className, constructorName);
+                object resultObj = MoodAnalyseFactory.CreateMoodAnalyserUsingParameterizedConstructor(className, constructorName, "GOOD");
             }
             catch (MoodAnalyserCustomException e)
             {
@@ -208,5 +208,7 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("constructor not found", e.Message);
             }
         }
+
+
     }
 }

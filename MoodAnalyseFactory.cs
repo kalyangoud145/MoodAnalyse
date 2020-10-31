@@ -56,7 +56,7 @@ namespace MoodAnalyse
         /// or
         /// class not found.
         /// </exception>
-        public static object CreateMoodAnalyserUsingParameterizedConstructor(string className, string constructorName)
+        public static object CreateMoodAnalyserUsingParameterizedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyser);
             if (type.Name.Equals(className) || type.FullName.Equals(className))
@@ -64,12 +64,12 @@ namespace MoodAnalyse
                 if (type.Name.Equals(constructorName))
                 {
                     ConstructorInfo constructorInfo = type.GetConstructor(new[] { typeof(string) });
-                    object instance = constructorInfo.Invoke(new object[] { "HAPPY" });
+                    object instance = constructorInfo.Invoke(new object[] { message });
                     return instance;
                 }
                 else
                 {
-                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "constructor is not found");
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "constructor not found");
                 }
             }
             else
