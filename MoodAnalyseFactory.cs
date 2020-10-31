@@ -96,7 +96,7 @@ namespace MoodAnalyse
             }
             catch (NullReferenceException)
             {
-                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "no such method.");
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "no such method");
             }
         }
     }
