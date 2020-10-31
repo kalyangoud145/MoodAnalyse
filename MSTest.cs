@@ -149,6 +149,7 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("constructor not found", e.Message);
             }
         }
+
         ///UC 5
         /// <summary>
         /// Givens the mood analyser class name should return mood analyser object using parametrized constructor.
