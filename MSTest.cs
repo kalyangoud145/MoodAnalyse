@@ -218,9 +218,23 @@ namespace MoodAnalyserTest
             string message = "HAPPY";
             string methodName = "AnalyseMood";
             //Act
-            string actual = MoodAnalyseFactory.InvokeAnalyseMood(message, methodName);
+            string mood = MoodAnalyseFactory.InvokeAnalyseMood(message, methodName);
             //Assert
-            Assert.AreEqual("HAPPY", actual);
+            Assert.AreEqual("HAPPY", mood);
+        }
+        /// <summary>
+        ///  Given sad message using reflection when proper should retutn sad mood
+        /// </summary>
+        [TestMethod]
+        public void Given_Sad_Message_Using_Reflection_When_Proper_Should_Return_SAD()
+        {
+            //Arrange
+            string message = "SAD";
+            string methodName = "AnalyseMood";
+            //Act
+            string mood = MoodAnalyseFactory.InvokeAnalyseMood(message, methodName);
+            //Assert
+            Assert.AreEqual("SAD", mood);
         }
     }
 }
