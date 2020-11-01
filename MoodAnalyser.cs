@@ -11,7 +11,7 @@ namespace MoodAnalyse
     public class MoodAnalyser
     {
         /// Initialised message as private
-        private string message;
+        public string message;
 
         public MoodAnalyser()
         {

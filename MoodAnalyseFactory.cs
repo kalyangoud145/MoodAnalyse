@@ -99,6 +99,51 @@ namespace MoodAnalyse
                 throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "no such method");
             }
         }
+        /// <summary>
+        /// Sets the field value to change the mood dynamically
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns></returns>
+        /// <exception cref="MoodAnalysisCustomException">
+        /// No such field found
+        /// or
+        /// Mood should not be NULL
+        /// </exception>
+        public static Object SetFieldValue(string message, string fieldName)
+        {
+            // Get the type of the class
+            Type type = typeof(MoodAnalyser);
+
+            // Create an object of class
+            object mood = Activator.CreateInstance(type);
+
+            //Get the field and If the field is not found it throws null exception and if message is empty throw exception
+            // catch the exception if thrown
+            try
+            {
+                // Get the field by using reflections
+                FieldInfo fieldInfo = type.GetField(fieldName);
+
+                // set the field value of a particular field in particular object
+                fieldInfo.SetValue(mood, message);
+
+                // Get the method using reflection
+                MethodInfo method = type.GetMethod("AnalyseMood");
+
+                // Invoke the method using reflection
+                object methodReturn = method.Invoke(mood, null);
+                return methodReturn;
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_FIELD, "No such field found");
+            }
+            catch
+            {
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Mood should not be NULL");
+            }
+        }
     }
 }
 
