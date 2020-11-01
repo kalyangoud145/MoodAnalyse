@@ -257,5 +257,20 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("no such method", e.Message);
             }
         }
+        /// <summary>
+        /// TC 7.1 When given proper fieldName and a mood message for happy mood then should return HAPPY
+        /// </summary>
+        [TestMethod]
+        public void Given_ProperFieldName_And_HappyMoodMessage_Should_Return_HAPPY()
+        {
+            ///Arrange
+            string mood = "I am happy today";
+            string fieldName = "message";
+            /// ACT
+            object actual = MoodAnalyseFactory.SetFieldValue(mood, fieldName);
+
+            /// Assert
+            Assert.AreEqual("HAPPY", actual);
+        }
     }
 }
