@@ -283,13 +283,33 @@ namespace MoodAnalyserTest
                 ///Arrange
                 string mood = "I am in happy mood today";
                 string fieldName = "InvalidField";
-                /// ACT
+                /// Act
                 object actual = MoodAnalyseFactory.SetFieldValue(mood, fieldName);
             }
             catch (MoodAnalyserCustomException e)
             {
                 /// Assert
                 Assert.AreEqual("No such field found", e.Message);
+            }
+        }
+        /// <summary>
+        /// TC 7.3 When given correct fieldName and passing a null mood message then throw error that Mood should not be NULL
+        /// </summary>
+        [TestMethod]
+        public void Given_Proper_FieldName_And_NULL_Should_Return_MoodShouldNotBeNULL()
+        {
+            try
+            {
+                ///Arrange
+                string mood = null;
+                string fieldName = "message";
+                /// Act
+                object actual = MoodAnalyseFactory.SetFieldValue(mood, fieldName);
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                /// Assert
+                Assert.AreEqual("Mood should not be NULL", e.Message);
             }
         }
     }
